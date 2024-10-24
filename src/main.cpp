@@ -41,8 +41,8 @@ SPIClass mySpi = SPIClass(VSPI); // critical to get touch working
 XPT2046_Touchscreen ts(XPT2046_CS, XPT2046_IRQ);
 
 /*Change to your screen resolution*/
-static const uint16_t screenWidth = 320;
-static const uint16_t screenHeight = 240;
+static const uint16_t screenWidth = 240;
+static const uint16_t screenHeight = 320;
 
 static lv_disp_draw_buf_t draw_buf;
 static lv_color_t buf[screenWidth * screenHeight / 10];
@@ -124,10 +124,10 @@ void setup()
 
     mySpi.begin(XPT2046_CLK, XPT2046_MISO, XPT2046_MOSI, XPT2046_CS); /* Start second SPI bus for touchscreen */
     ts.begin(mySpi);                                                  /* Touchscreen init */
-    ts.setRotation(1);                                                /* Landscape orientation */
+    ts.setRotation(2);                                                /* Landscape orientation */
 
     tft.begin();        /* TFT init */
-    tft.setRotation(1); // Landscape orientation  1 =  CYC usb on right, 2 for vertical
+    tft.setRotation(2); // Landscape orientation  1 =  CYC usb on right, 2 for vertical
 
     lv_disp_draw_buf_init(&draw_buf, buf, NULL, screenWidth * screenHeight / 10);
 
